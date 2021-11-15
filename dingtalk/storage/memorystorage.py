@@ -26,7 +26,7 @@ class MemoryStorage(BaseStorage):
     def set(self, key, value, ttl=None):
         if value is None:
             return
-        self._data[key] = (value, int(time.time()) + ttl)
+        self._data[key] = (value, int(time.time()) + (ttl or 0))
 
     def delete(self, key):
         self._data.pop(key, None)
